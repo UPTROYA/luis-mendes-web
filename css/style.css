@@ -1,33 +1,55 @@
+/* ================================================= */
+/* RESET GLOBAL                                     */
+/* ================================================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-
-*{margin:0;padding:0;box-sizing:border-box}
-
+/* ================================================= */
+/* VARIÁVEIS DE TEMA                                */
+/* ================================================= */
 :root{
   --bg:#000000;
-  --text:#fff;
+  --text:#ffffff;
   --primary:#eda547;
   --card:#161616;
   --muted:#bdbdbd;
 }
 
+/* ================================================= */
+/* BODY / PERFORMANCE                               */
+/* ================================================= */
 body{
   background:var(--bg);
   color:var(--text);
   font-family:Inter,system-ui,Arial;
   transition:.3s;
+  -webkit-font-smoothing:antialiased;
 }
 
+/* Tema claro */
 body.light{
-  --bg:#fff;
+  --bg:#ffffff;
   --text:#1b1b1b;
   --card:#f4f4f4;
 }
 
-.container{width:min(1100px,90%);margin:auto}
+/* ================================================= */
+/* CONTAINER                                       */
+/* ================================================= */
+.container{
+  width:min(1100px,90%);
+  margin:auto;
+}
 
+/* ================================================= */
+/* HEADER / NAVBAR                                  */
+/* ================================================= */
 header{
   position:fixed;
-  top:0;left:0;right:0;
+  inset:0 0 auto 0;
   background:rgba(0,0,0,.6);
   backdrop-filter:blur(6px);
   z-index:1000;
@@ -40,7 +62,7 @@ header{
   padding:14px 0;
 }
 
-.logo{width:60px}
+.logo{width:70px}
 
 .nav-links{
   list-style:none;
@@ -70,7 +92,9 @@ header{
 
 main{padding-top:90px}
 
-/* HERO */
+/* ================================================= */
+/* HERO (ANIMAÇÃO PREMIUM)                          */
+/* ================================================= */
 .hero{
   min-height:calc(100vh - 90px);
   display:flex;
@@ -80,10 +104,9 @@ main{padding-top:90px}
   position:relative;
   overflow:hidden;
   background:
-    linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.8)),
+    linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.85)),
     url('../assets/hero-bg.png') center/cover no-repeat;
 }
-
 
 #particles{
   position:absolute;
@@ -95,6 +118,19 @@ main{padding-top:90px}
   position:relative;
   z-index:2;
   max-width:720px;
+  animation:heroEnter 1s cubic-bezier(.25,.9,.25,1) both;
+}
+
+/* Entrada elegante do hero */
+@keyframes heroEnter{
+  from{
+    opacity:0;
+    transform:translateY(30px) scale(.98);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
 
 .hero h1{
@@ -117,6 +153,9 @@ main{padding-top:90px}
   font-weight:700;
 }
 
+/* ================================================= */
+/* SEÇÕES                                           */
+/* ================================================= */
 section{padding:70px 0}
 
 .section-title{
@@ -126,12 +165,16 @@ section{padding:70px 0}
   font-size:clamp(1.6rem,3vw,2.2rem);
 }
 
+/* ================================================= */
+/* CARDS BASE                                       */
+/* ================================================= */
 .card{
   background:var(--card);
   padding:22px;
   border-radius:14px;
 }
 
+/* Grids */
 .services-grid,
 .processo-grid{
   display:grid;
@@ -139,6 +182,9 @@ section{padding:70px 0}
   gap:18px;
 }
 
+/* ================================================= */
+/* LISTAS                                           */
+/* ================================================= */
 .who-list{
   max-width:420px;
   margin:auto;
@@ -153,49 +199,78 @@ section{padding:70px 0}
   border-radius:10px;
 }
 
+/* ================================================= */
+/* PORTFÓLIO (HOVER EXCLUSIVO + OVERLAY CTA)        */
+/* ================================================= */
 .portfolio-grid{
   display:grid;
   gap:18px;
 }
 
 .portfolio-item{
+  position:relative;
   background:var(--card);
   padding:26px;
   border-radius:14px;
   text-align:center;
-}
-/*video*/
-
-.portfolio-section{
-  position:relative;
-  min-height:100vh; /* ou 60vh, se preferir */
   overflow:hidden;
 }
 
-.portfolio-video{
+/* Overlay CTA automático */
+.portfolio-item::before{
+  content:"Ver projeto";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  letter-spacing:.5px;
+  color:#000;
+  background:rgba(237,165,71,.92);
+  opacity:0;
+  transform:scale(.96);
+  transition:.4s cubic-bezier(.25,.9,.25,1);
+}
+
+.portfolio-item:hover::before{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* ================================================= */
+/* CINEMA VIDEO                                     */
+/* ================================================= */
+.cinema-wrapper{
+  display:flex;
+  justify-content:center;
+  padding:40px 0;
+}
+
+.cinema-screen{
+  position:relative;
+  width:100%;
+  max-width:1100px;
+  aspect-ratio:21 / 9;
+  background:#000;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:
+    0 40px 120px rgba(0,0,0,.85),
+    inset 0 0 0 1px rgba(255,255,255,.04);
+}
+
+.cinema-screen video{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
-  object-fit:cover; /* 🔥 chave */
-  object-position:center;
-  z-index:0;
+  object-fit:contain;
 }
 
-.portfolio-overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.78);
-  z-index:1;
-}
-
-.portfolio-content{
-  position:relative;
-  z-index:2;
-}
-
-/* fim video */
-
+/* ================================================= */
+/* CONTATO                                          */
+/* ================================================= */
 .contact-grid{
   max-width:420px;
   margin:auto;
@@ -213,23 +288,70 @@ section{padding:70px 0}
   font-weight:700;
 }
 
+/* ================================================= */
+/* FOOTER                                           */
+/* ================================================= */
 footer{
   text-align:center;
   padding:26px;
   color:var(--muted);
 }
 
-/* animação */
+/* ================================================= */
+/* SCROLL ANIMATION + STAGGER                       */
+/* ================================================= */
 .fade-up{
   opacity:0;
-  transform:translateY(30px);
-  transition:.7s ease;
-}
-.fade-up.active{
-  opacity:1;
-  transform:none;
+  transform:translateY(24px);
+  filter:blur(2px);
+  transition:
+    opacity .45s ease-out,
+    transform .45s cubic-bezier(.25,.9,.25,1),
+    filter .45s ease-out;
 }
 
+.fade-up.in-view{
+  opacity:1;
+  transform:none;
+  filter:blur(0);
+}
+
+/* ================================================= */
+/* HOVER CINEMATOGRÁFICO GLOBAL                     */
+/* ================================================= */
+.card,
+.portfolio-item{
+  transition:
+    transform .45s cubic-bezier(.25,.9,.25,1),
+    box-shadow .45s ease;
+  will-change:transform;
+}
+
+.card:hover,
+.portfolio-item:hover{
+  transform:translateY(-8px) scale(1.015);
+  box-shadow:
+    0 35px 90px rgba(0,0,0,.75);
+}
+
+/* ================================================= */
+/* ACESSIBILIDADE / PERFORMANCE                     */
+/* ================================================= */
+@media (prefers-reduced-motion:reduce){
+  *{
+    animation:none!important;
+    transition:none!important;
+  }
+}
+
+/* ================================================= */
+/* RESPONSIVO                                       */
+/* ================================================= */
 @media(max-width:768px){
   .nav-links{display:none}
+
+  .card:hover,
+  .portfolio-item:hover{
+    transform:translateY(-4px) scale(1.01);
+  }
 }

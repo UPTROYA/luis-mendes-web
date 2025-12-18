@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frigorífico Nacional | Portfólio</title>
+  <link rel="stylesheet" href="css/bn.css">
+</head>
+<body>
+
+<!-- PAGE TRANSITION -->
+<div class="page-transition"></div>
+
+<!-- NAVBAR -->
+<header class="navbar" data-animate="fade">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="Luis Mendes">
+    </a>
+    <nav class="nav-menu">
+      <a href="index.html">Início</a>
+      <a href="portfolio.html" class="active">Portfólio</a>
+      <a href="index.html#contact" class="btn">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="detalhes-container" data-animate="fade">
+
+    <!-- Título -->
+    <h1>Frigorífico Nacional</h1>
+
+    <!-- Descrição -->
+    <section class="detalhes-secao" id="descricao">
+      <h2>Descrição do Projeto</h2>
+      <p>
+        Este projeto foi desenvolvido para fortalecer a autoridade da marca, posicionamento nacional e presença digital sólida.
+        O site institucional apresenta um design moderno, responsivo e otimizado para gerar confiança e engajamento com clientes.
+      </p>
+    </section>
+
+    <!-- Tecnologias -->
+    <section class="detalhes-secao" id="tecnologias">
+      <h2>Tecnologias Utilizadas</h2>
+      <p>
+        HTML5, CSS3, JavaScript, SEO, Design Responsivo, Performance e Usabilidade.  
+        O foco foi criar um layout elegante, rápido e intuitivo para todos os dispositivos.
+      </p>
+    </section>
+
+    <!-- Resultados -->
+    <section class="detalhes-secao" id="resultados">
+      <h2>Resultados & Benefícios</h2>
+      <p>
+        - Aumento da autoridade digital da marca. <br>
+        - Melhor experiência para usuários em dispositivos móveis e desktop. <br>
+        - Geração de contatos qualificados e aumento de conversões. <br>
+        - Layout premium que transmite profissionalismo e confiança.
+      </p>
+    </section>
+
+    <!-- Galeria de imagens -->
+    <section class="detalhes-secao" id="imagens">
+      <h2>Galeria do Projeto</h2>
+      <div class="detalhes-imagens">
+        <img src="assets/bn-1.jpg" alt="Página Inicial Frigorífico Nacional">
+        <img src="assets/bn-2.jpg" alt="Página Produtos Frigorífico Nacional">
+        <img src="assets/bn-3.jpg" alt="Página Contato Frigorífico Nacional">
+      </div>
+    </section>
+
+    <!-- Botão voltar -->
+    <a href="portfolio.html" class="btn-voltar">← Voltar ao Portfólio</a>
+
+  </div>
+</main>
+
+<footer class="footer" data-animate="fade">
+  © 2025 Luis Mendes — Consultoria & Criação de Sites
+</footer>
+
+<!-- PAGE TRANSITION SCRIPT -->
+<script>
+  const transition = document.querySelector('.page-transition');
+  window.addEventListener('load', () => transition.classList.add('hide'));
+  document.querySelectorAll('a[href]').forEach(link => {
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      if (!href.startsWith('#') && !href.startsWith('http')) {
+        e.preventDefault();
+        transition.classList.remove('hide');
+        setTimeout(() => window.location.href = href, 500);
+      }
+    });
+  });
+</script>
+
+<!-- SCROLL ANIMATION SCRIPT -->
+<script>
+  const animatedElements = document.querySelectorAll('[data-animate]');
+  const scrollObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        scrollObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  animatedElements.forEach(el => scrollObserver.observe(el));
+</script>
+
+</body>
+</html>

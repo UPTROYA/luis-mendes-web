@@ -1,0 +1,356 @@
+/* ===================================== */
+/* RESET                                 */
+/* ===================================== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* ===================================== */
+/* VARIÁVEIS                             */
+/* ===================================== */
+:root{
+  --bg:#030303;
+  --surface:#0f0f0f;
+  --border:#1f1f1f;
+  --text:#f2f2f2;
+  --muted:#9a9a9a;
+  --primary:#eda547;
+}
+
+/* ===================================== */
+/* BASE                                  */
+/* ===================================== */
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter, system-ui, Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{
+  color:inherit;
+}
+
+/* ===================================== */
+/* CONTAINER                             */
+/* ===================================== */
+.container{
+  width:min(1200px, 92%);
+  margin:auto;
+}
+
+/* ===================================== */
+/* NAVBAR                                */
+/* ===================================== */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:80px;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  z-index:1000;
+}
+
+.nav-inner{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand img{
+  height:64px;
+}
+
+.nav-menu{
+  display:flex;
+  gap:28px;
+  align-items:center;
+}
+
+.nav-menu a{
+  text-decoration:none;
+  font-weight:500;
+}
+
+.nav-menu a.active{
+  color:var(--primary);
+}
+
+.nav-menu .btn{
+  background:var(--primary);
+  color:#000;
+  padding:10px 20px;
+  border-radius:10px;
+  font-weight:600;
+}
+
+main{
+  padding-top:130px;
+}
+
+/* ===================================== */
+/* PORTFÓLIO                             */
+/* ===================================== */
+.portfolio-section{
+  padding:80px 0 140px;
+}
+
+.section-title{
+  text-align:center;
+  color:var(--primary);
+  font-size:2.4rem;
+  margin-bottom:80px;
+}
+
+.portfolio-list{
+  display:flex;
+  flex-direction:column;
+  gap:80px;
+}
+
+/* ===================================== */
+/* CARD PADRÃO                           */
+/* ===================================== */
+.project{
+  max-width:760px;
+  margin:0 auto;
+  background:linear-gradient(180deg,#0f0f0f,#0a0a0a);
+  border:1px solid var(--border);
+  border-radius:22px;
+  overflow:hidden;
+  position:relative;
+  cursor:pointer;
+  transition:
+    transform .7s cubic-bezier(.2,.8,.2,1),
+    box-shadow .7s cubic-bezier(.2,.8,.2,1),
+    border-color .7s;
+}
+
+/* DESTACADO */
+.project-featured{
+  max-width:920px;
+  box-shadow:0 35px 90px rgba(0,0,0,.7);
+}
+
+/* ===================================== */
+/* OVERLAY CINEMATOGRÁFICO               */
+/* ===================================== */
+.project::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.05),
+      rgba(0,0,0,.75)
+    );
+  opacity:0;
+  transition:opacity .7s ease;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* ===================================== */
+/* MÍDIA                                 */
+/* ===================================== */
+.project-media{
+  width:100%;
+  aspect-ratio:16 / 9;
+  background:#000;
+  overflow:hidden;
+}
+
+.project-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1);
+  transition:transform 1.4s cubic-bezier(.2,.8,.2,1);
+}
+
+/* ===================================== */
+/* TÍTULO                                */
+/* ===================================== */
+.project-title{
+  padding:32px 32px 22px;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+
+.project-title h3{
+  font-size:1.5rem;
+  font-weight:600;
+  margin-bottom:6px;
+  transition:transform .5s ease;
+}
+
+.project-title span{
+  font-size:.72rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--primary);
+}
+
+/* ===================================== */
+/* CONTEÚDO                              */
+/* ===================================== */
+.project-content{
+  padding:28px 32px 40px;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+
+.project-content p{
+  line-height:1.65;
+  color:#d8d8d8;
+}
+
+/* LINK */
+.project-link{
+  display:inline-block;
+  margin-top:26px;
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:600;
+  opacity:.6;
+  transform:translateY(8px);
+  transition:
+    opacity .4s ease,
+    transform .4s ease;
+}
+
+/* ===================================== */
+/* HOVER CINEMATOGRÁFICO TOTAL           */
+/* ===================================== */
+@media (hover:hover){
+
+  .project:hover{
+    transform:translateY(-12px);
+    border-color:rgba(237,165,71,.65);
+    box-shadow:
+      0 50px 130px rgba(0,0,0,.9),
+      0 0 0 1px rgba(237,165,71,.18);
+  }
+
+  .project:hover::before{
+    opacity:1;
+  }
+
+  .project:hover .project-media img{
+    transform:scale(1.1);
+  }
+
+  .project:hover .project-title h3{
+    transform:translateY(-2px);
+  }
+
+  .project:hover .project-link{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* DESTACADO MAIS INTENSO */
+  .project-featured:hover{
+    transform:translateY(-16px);
+    box-shadow:
+      0 70px 180px rgba(0,0,0,.95),
+      0 0 0 1px rgba(237,165,71,.25);
+  }
+}
+
+/* ===================================== */
+/* FOOTER                                */
+/* ===================================== */
+.footer{
+  text-align:center;
+  padding:34px;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+}
+
+/* ===================================== */
+/* MOBILE                                */
+/* ===================================== */
+@media(max-width:768px){
+
+  .nav-menu{
+    display:none;
+  }
+
+  .section-title{
+    font-size:1.9rem;
+    margin-bottom:60px;
+  }
+
+  .project-title h3{
+    font-size:1.3rem;
+  }
+
+  .project-title,
+  .project-content{
+    padding:24px;
+  }
+}
+
+/* ===================================== */
+/* PAGE TRANSITION (APPLE STYLE)          */
+/* ===================================== */
+.page-transition{
+  position:fixed;
+  inset:0;
+  background:#000;
+  z-index:9999;
+  opacity:1;
+  pointer-events:none;
+  transition:opacity .6s ease;
+}
+
+.page-transition.hide{
+  opacity:0;
+}
+
+/* ===================================== */
+/* SCROLL ANIMATION (APPLE STYLE)        */
+/* ===================================== */
+[data-animate]{
+  opacity:0;
+  transform:translateY(60px);
+  filter:blur(6px);
+  transition:
+    opacity .9s ease,
+    transform .9s cubic-bezier(.2,.8,.2,1),
+    filter .9s ease;
+}
+
+[data-animate].in-view{
+  opacity:1;
+  transform:translateY(0);
+  filter:blur(0);
+}
+
+/* VARIAÇÕES */
+[data-animate="fade"]{
+  transform:none;
+}
+
+[data-animate="left"]{
+  transform:translateX(-60px);
+}
+
+[data-animate="right"]{
+  transform:translateX(60px);
+}
+
+[data-animate="zoom"]{
+  transform:scale(.95);
+}
+
+

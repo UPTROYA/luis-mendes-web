@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfólio | Luis Mendes</title>
+
+  <link rel="stylesheet" href="css/portfolio.css">
+</head>
+
+<body>
+
+<!-- PAGE TRANSITION -->
+<div class="page-transition"></div>
+
+<!-- NAVBAR -->
+<header class="navbar" data-animate="fade">
+  <div class="container nav-inner">
+
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="Luis Mendes">
+    </a>
+
+    <nav class="nav-menu">
+      <a href="index.html">Início</a>
+      <a href="portfolio.html" class="active">Portfólio</a>
+      <a href="index.html#contact" class="btn">Contato</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- PORTFÓLIO -->
+  <section class="portfolio-section">
+    <div class="container">
+
+      <h2 class="section-title" data-animate="fade">
+        Projetos em Destaque
+      </h2>
+
+      <div class="portfolio-list">
+
+        <!-- PROJETO DESTACADO -->
+        <article class="project project-featured" data-animate="zoom">
+          <div class="project-media">
+            <img src="assets/bn.jpg" alt="Frigorífico Nacional">
+          </div>
+
+          <div class="project-title">
+            <h3>Frigorífico Nacional</h3>
+            <span>Site institucional</span>
+          </div>
+
+          <div class="project-content">
+            <p>
+              Projeto desenvolvido para fortalecer autoridade,
+              posicionamento nacional e presença digital sólida.
+            </p>
+
+            <a href="bn.html" class="project-link">Ver detalhes</a>
+          </div>
+        </article>
+
+        <!-- PROJETO -->
+        <article class="project" data-animate>
+          <div class="project-media">
+            <img src="assets/cosmeticos.jpg" alt="Marca de Cosméticos">
+          </div>
+
+          <div class="project-title">
+            <h3>Marca de Cosméticos</h3>
+            <span>Identidade & Conversão</span>
+          </div>
+
+          <div class="project-content">
+            <p>
+              Visual premium aliado a uma estrutura focada
+              em conversão e posicionamento de marca.
+            </p>
+
+            <a href="#" class="project-link">Ver detalhes</a>
+          </div>
+        </article>
+
+        <!-- PROJETO -->
+        <article class="project" data-animate>
+          <div class="project-media">
+            <img src="assets/autopecas.jpg" alt="Auto Peças">
+          </div>
+
+          <div class="project-title">
+            <h3>Auto Peças</h3>
+            <span>Negócio local</span>
+          </div>
+
+          <div class="project-content">
+            <p>
+              Site rápido e objetivo, pensado para gerar
+              contatos diretos via WhatsApp.
+            </p>
+
+            <a href="#" class="project-link">Ver detalhes</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" data-animate="fade">
+  © 2025 Luis Mendes — Consultoria & Criação de Sites
+</footer>
+
+<!-- PAGE TRANSITION SCRIPT -->
+<script>
+  const transition = document.querySelector('.page-transition');
+
+  window.addEventListener('load', () => {
+    transition.classList.add('hide');
+  });
+
+  document.querySelectorAll('a[href]').forEach(link => {
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      if (!href.startsWith('#') && !href.startsWith('http')) {
+        e.preventDefault();
+        transition.classList.remove('hide');
+        setTimeout(() => {
+          window.location.href = href;
+        }, 500);
+      }
+    });
+  });
+</script>
+
+<!-- SCROLL ANIMATION SCRIPT -->
+<script>
+  const animatedElements = document.querySelectorAll('[data-animate]');
+
+  const scrollObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        scrollObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  animatedElements.forEach(el => scrollObserver.observe(el));
+</script>
+
+</body>
+</html>

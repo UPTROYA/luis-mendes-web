@@ -1,123 +1,115 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Luis Mendes - Consultoria e Criação de Sites</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Luis Mendes - Consultoria e Criação de Sites</title>
 
+  <meta name="description" content="Criação de sites profissionais, modernos e responsivos para negócios que querem crescer no digital.">
 
-<meta name="description" content="Criação de sites profissionais, modernos e responsivos para negócios que querem crescer no digital.">
-
-
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<header>
-  <div class="container nav-content">
-    <img src="assets/logo.png" class="logo">
-    <ul class="nav-links">
-      <li><a href="#home">Início</a></li>
-      <li><a href="#services">Serviços</a></li>
-      <li><a href="#portfolio">Portfólio</a></li>
-      <li><a href="#contact" class="btn-nav">Contato</a></li>
-    </ul>
-    <button class="theme-toggle">🌙</button>
-  </div>
-</header>
+  <!-- PAGE TRANSITION -->
+  <div class="page-transition"></div>
 
-<main>
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <div class="container nav-content">
+      <img src="assets/logo.png" class="logo" alt="Logo">
 
-<section id="home" class="hero">
-  <canvas id="particles"></canvas>
-  <div class="hero-content fade-up">
-    <h1>Criação de Sites Profissionais Para Negócios Que Querem Crescer</h1>
-    <p>Sites rápidos, modernos e focados em gerar autoridade e clientes.</p>
-    <a href="#contact" class="btn-primary">Solicitar orçamento</a>
-  </div>
-</section>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">Início</a></li>
+        <li><a href="#services" class="nav-link">Serviços</a></li>
+        <li><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+        <li><a href="#contact" class="btn-nav nav-link">Contato</a></li>
+      </ul>
 
-<section class="container">
-  <h2 class="section-title fade-up">Para quem é</h2>
-  <ul class="who-list fade-up">
-    <li>Pequenas e médias empresas</li>
-    <li>Profissionais liberais</li>
-    <li>Igrejas e projetos cristãos</li>
-    <li>Negócios locais</li>
-    <li>Quem quer sair do amadorismo</li>
-  </ul>
-</section>
+      <button class="theme-toggle">🌙</button>
+    </div>
+  </header>
 
-<section id="services" class="container">
-  <h2 class="section-title fade-up">Serviços</h2>
-  <div class="services-grid">
-    <div class="card fade-up">Criação de Sites Profissionais</div>
-    <div class="card fade-up">Consultoria Personalizada</div>
-    <div class="card fade-up">Branding e Identidade Visual</div>
-  </div>
-</section>
+  <main>
 
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <canvas id="particles"></canvas>
 
-<section id="portfolio" class="container">
-  <h2 class="section-title fade-up">Portfólio</h2>
-  <div class="portfolio-grid">
-    <div class="portfolio-item fade-up">Frigorífico — Autoridade nacional</div>
-<!--    <div class="portfolio-item fade-up">Marca de cosméticos</div>
-    <div class="portfolio-item fade-up">Auto peças</div> -->
-  </div>
-</section>
+      <div class="hero-content fade-up">
+        <h1>Criação de Sites Profissionais Para Negócios Que Querem Crescer</h1>
+        <p>Sites rápidos, modernos e focados em gerar autoridade e clientes.</p>
+        <a href="#contact" class="btn-primary">Solicitar orçamento</a>
+      </div>
+    </section>
 
+    <!-- PARA QUEM É -->
+    <section class="container">
+      <h2 class="section-title fade-up">Para quem é</h2>
 
-<section id="portfolio" class="portfolio-section">
-  <video
-    class="portfolio-video"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="metadata"
-  >
-    <source src="assets/portfolio-bg.mp4" type="video/mp4">
-  </video>
+      <ul class="who-list fade-up">
+        <li>Pequenas e médias empresas</li>
+        <li>Profissionais liberais</li>
+        <li>Igrejas e projetos cristãos</li>
+        <li>Negócios locais</li>
+        <li>Quem quer sair do amadorismo</li>
+      </ul>
+    </section>
 
-  <div class="portfolio-overlay"></div>
+    <!-- SERVIÇOS -->
+    <section id="services" class="container">
+      <h2 class="section-title fade-up">Serviços</h2>
 
-  <div class="container portfolio-content">
-   <!-- <h2 class="section-title">Portfólio</h2> -->
-    
-    <!-- conteúdo -->
-  </div>
-</section>
+      <div class="services-grid">
+        <div class="card fade-up">Criação de Sites Profissionais</div>
+        <div class="card fade-up">Consultoria Personalizada</div>
+        <div class="card fade-up">Branding e Identidade Visual</div>
+      </div>
+    </section>
 
+    <!-- PORTFÓLIO CTA -->
+    <section class="container">
+      <h2 class="section-title fade-up">Portfólio</h2>
 
-<section class="container">
-  <h2 class="section-title fade-up">Processo de trabalho</h2>
-  <div class="processo-grid">
-    <div class="card fade-up">Entendimento do negócio</div>
-    <div class="card fade-up">Planejamento</div>
-    <div class="card fade-up">Design</div>
-    <div class="card fade-up">Desenvolvimento</div>
-    <div class="card fade-up">Publicação</div>
-  </div>
-</section>
+      <p class="fade-up" style="text-align:center;color:var(--muted)">
+        Veja alguns projetos reais desenvolvidos recentemente.
+      </p>
 
-<section id="contact" class="container">
-  <h2 class="section-title fade-up">Contato</h2>
-  <div class="contact-grid fade-up">
-    <a href="https://wa.me/55SEUNUMERO" target="_blank">WhatsApp</a>
-    <a href="https://instagram.com" target="_blank">Instagram</a>
-  </div>
-</section>
+      <div style="text-align:center;margin-top:20px">
+        <a href="portfolio.html" class="btn-primary">Ver Portfólio Completo</a>
+      </div>
+    </section>
 
-</main>
+    <!-- PROCESSO -->
+    <section class="container">
+      <h2 class="section-title fade-up">Processo de trabalho</h2>
 
-<footer>
-© 2025 Luis Mendes — Consultoria & Criação de Sites
-</footer>
+      <div class="processo-grid">
+        <div class="card fade-up">Entendimento do negócio</div>
+        <div class="card fade-up">Planejamento</div>
+        <div class="card fade-up">Design</div>
+        <div class="card fade-up">Desenvolvimento</div>
+        <div class="card fade-up">Publicação</div>
+      </div>
+    </section>
 
+    <!-- CONTATO -->
+    <section id="contact" class="container">
+      <h2 class="section-title fade-up">Contato</h2>
 
-<script src="js/main.js" defer></script>
+      <div class="contact-grid fade-up">
+        <a href="https://wa.me/55SEUNUMERO" target="_blank">WhatsApp</a>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+      </div>
+    </section>
 
+  </main>
+
+  <footer>
+    © 2025 Luis Mendes — Consultoria & Criação de Sites
+  </footer>
+
+  <script src="js/main.js" defer></script>
 </body>
 </html>
