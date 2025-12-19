@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página não encontrada | Luis Mendes</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* Estilos exclusivos da 404 */
+    .error-section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .error-code {
+      font-size: clamp(8rem, 20vw, 15rem);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(to bottom, #333, #000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      /* Borda brilhante no texto */
+      text-shadow: 0 0 50px rgba(237, 165, 71, 0.1);
+      position: relative;
+      z-index: 2;
+    }
+    .error-msg {
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      z-index: 2;
+    }
+    .glitch-effect {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(237, 165, 71, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ambient-light light-top-right"></div>
+  <div class="ambient-light light-bottom-left"></div>
+
+  <main class="error-section">
+    <div class="glitch-effect"></div>
+    
+    <h1 class="error-code fade-up">404</h1>
+    <p class="error-msg fade-up">Ops! Parece que você se perdeu no espaço digital.</p>
+    
+    <div class="fade-up">
+      <a href="index.html" class="btn-primary">Voltar para a Terra (Home)</a>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script> 
+  <script src="js/main.js"></script>
+</body>
+</html>

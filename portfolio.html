@@ -4,154 +4,184 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfólio | Luis Mendes</title>
+  <meta name="description" content="Confira nossos projetos recentes de criação de sites, e-commerce e identidade visual.">
+  
+<meta name="description" content="Luis Mendes - Especialista em Criação de Sites de Alta Performance e Design Estratégico.">
+<meta name="keywords" content="web design, sites, landing pages, desenvolvimento web, consultoria">
+<meta name="author" content="Luis Mendes">
+<meta name="robots" content="index, follow">
 
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.seusite.com.br/">
+<meta property="og:title" content="Luis Mendes | Consultoria & Criação de Sites">
+<meta property="og:description" content="Transformo negócios através de design estratégico e tecnologia de ponta. Veja meu portfólio.">
+<meta property="og:image" content="https://www.seusite.com.br/assets/og-image.jpg"> <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Luis Mendes | Consultoria & Criação de Sites">
+<meta name="twitter:description" content="Transformo negócios através de design estratégico e tecnologia de ponta.">
+<meta name="twitter:image" content="https://www.seusite.com.br/assets/og-image.jpg">
+
+<link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/portfolio.css">
 </head>
 
 <body>
+  <div class="ambient-light light-top-right"></div>
+  <div class="ambient-light light-bottom-left"></div>
 
-<!-- PAGE TRANSITION -->
-<div class="page-transition"></div>
+  <div class="page-transition"></div>
 
-<!-- NAVBAR -->
-<header class="navbar" data-animate="fade">
-  <div class="container nav-inner">
-
-    <a href="index.html" class="brand">
-      <img src="assets/logo.png" alt="Luis Mendes">
-    </a>
-
-    <nav class="nav-menu">
-      <a href="index.html">Início</a>
-      <a href="portfolio.html" class="active">Portfólio</a>
-      <a href="index.html#contact" class="btn">Contato</a>
-    </nav>
-
-  </div>
-</header>
-
-<main>
-
-  <!-- PORTFÓLIO -->
-  <section class="portfolio-section">
-    <div class="container">
-
-      <h2 class="section-title" data-animate="fade">
-        Projetos em Destaque
-      </h2>
-
-      <div class="portfolio-list">
-
-        <!-- PROJETO DESTACADO -->
-        <article class="project project-featured" data-animate="zoom">
-          <div class="project-media">
-            <img src="assets/bn.jpg" alt="Frigorífico Nacional">
-          </div>
-
-          <div class="project-title">
-            <h3>Frigorífico Nacional</h3>
-            <span>Site institucional</span>
-          </div>
-
-          <div class="project-content">
-            <p>
-              Projeto desenvolvido para fortalecer autoridade,
-              posicionamento nacional e presença digital sólida.
-            </p>
-
-            <a href="bn.html" class="project-link">Ver detalhes</a>
-          </div>
-        </article>
-
-        <!-- PROJETO -->
-        <article class="project" data-animate>
-          <div class="project-media">
-            <img src="assets/cosmeticos.jpg" alt="Marca de Cosméticos">
-          </div>
-
-          <div class="project-title">
-            <h3>Marca de Cosméticos</h3>
-            <span>Identidade & Conversão</span>
-          </div>
-
-          <div class="project-content">
-            <p>
-              Visual premium aliado a uma estrutura focada
-              em conversão e posicionamento de marca.
-            </p>
-
-            <a href="#" class="project-link">Ver detalhes</a>
-          </div>
-        </article>
-
-        <!-- PROJETO -->
-        <article class="project" data-animate>
-          <div class="project-media">
-            <img src="assets/autopecas.jpg" alt="Auto Peças">
-          </div>
-
-          <div class="project-title">
-            <h3>Auto Peças</h3>
-            <span>Negócio local</span>
-          </div>
-
-          <div class="project-content">
-            <p>
-              Site rápido e objetivo, pensado para gerar
-              contatos diretos via WhatsApp.
-            </p>
-
-            <a href="#" class="project-link">Ver detalhes</a>
-          </div>
-        </article>
-
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Luis Mendes">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Início</a></li>
+        <li><a href="index.html#services">Serviços</a></li>
+        <li><a href="portfolio.html" class="active">Portfólio</a></li>
+        <li><a href="index.html#contact" class="btn-nav">Contato</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
       </div>
     </div>
-  </section>
+  </header>
 
-</main>
+  <main>
+    <section class="portfolio-header">
+      <div class="container">
+        <h1 class="page-title fade-up">Cases Selecionados</h1>
+        <p class="page-subtitle fade-up">
+          Projetos desenvolvidos com foco em estética, funcionalidade e conversão.
+        </p>
 
-<footer class="footer" data-animate="fade">
-  © 2025 Luis Mendes — Consultoria & Criação de Sites
-</footer>
+        <div class="filters-container fade-up">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="site">Sites Institucionais</button>
+          <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+          <button class="filter-btn" data-filter="lp">Landing Pages</button>
+        </div>
+      </div>
+    </section>
 
-<!-- PAGE TRANSITION SCRIPT -->
-<script>
-  const transition = document.querySelector('.page-transition');
+    <section class="portfolio-section">
+      <div class="container">
+        <div class="portfolio-grid">
+          
+          <article class="project project-featured fade-up spotlight-card" data-category="site">
+            <a href="bn.html" class="project-link-wrapper">
+              <div class="project-media">
+                <img src="assets/bn.jpg" alt="Frigorífico Nacional" loading="lazy" decoding="async">
+              </div>
+              <div class="project-info">
+                <div class="project-meta">Site Institucional</div>
+                <h3>Frigorífico Nacional</h3>
+                <p>Desenvolvimento completo para fortalecer a autoridade da marca no cenário nacional.</p>
+                <span class="btn-link">Ver Case Completo</span>
+              </div>
+            </a>
+          </article>
 
-  window.addEventListener('load', () => {
-    transition.classList.add('hide');
-  });
+          <article class="project fade-up spotlight-card" data-category="ecommerce">
+            <a href="#" class="project-link-wrapper">
+              <div class="project-media">
+                <img src="assets/cosmeticos.jpg" alt="Marca de Cosméticos" loading="lazy" decoding="async">
+              </div>
+              <div class="project-info">
+                <div class="project-meta">E-commerce</div>
+                <h3>Beauty Brand</h3>
+                <p>Identidade visual premium aliada a uma estrutura focada em alta conversão.</p>
+                <span class="btn-link">Ver Detalhes</span>
+              </div>
+            </a>
+          </article>
 
-  document.querySelectorAll('a[href]').forEach(link => {
-    link.addEventListener('click', e => {
-      const href = link.getAttribute('href');
-      if (!href.startsWith('#') && !href.startsWith('http')) {
-        e.preventDefault();
-        transition.classList.remove('hide');
-        setTimeout(() => {
-          window.location.href = href;
-        }, 500);
-      }
+          <article class="project fade-up spotlight-card" data-category="lp">
+            <a href="#" class="project-link-wrapper">
+              <div class="project-media">
+                <img src="assets/tech.jpg" alt="Tech Startup" loading="lazy" decoding="async">
+              </div>
+              <div class="project-info">
+                <div class="project-meta">Landing Page</div>
+                <h3>Tech Startup</h3>
+                <p>Página de alta performance para captação de leads e apresentação de produto.</p>
+                <span class="btn-link">Ver Detalhes</span>
+              </div>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Luis Mendes" class="footer-logo">
+        <p>Transformando negócios através de design estratégico e tecnologia de ponta.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="index.html#services">Serviços</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="index.html#contact">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Conecte-se</h4>
+        <div class="social-icons">
+          <a href="#" target="_blank">IG</a>
+          <a href="#" target="_blank">IN</a>
+          <a href="#" target="_blank">BE</a>
+        </div>
+        <p class="email-contact">contato@luismendes.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Luis Mendes. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/55SEUNUMERO" target="_blank" class="whatsapp-float">
+    <svg viewBox="0 0 24 24" width="32" height="32" fill="#fff"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c1.005.572 1.973.97 3.1.97 4.652 0 7.115-3.804 5.923-7.798-1.045-3.08-3.414-4.121-6.217-4.121zm6.208 8.203c-.266.747-1.464 1.371-2.025 1.458-.456.071-1.054.126-3.235-.788-2.673-1.118-4.444-4.328-4.577-4.508-.133-.18-1.093-1.455-1.093-2.775 0-1.32.677-1.968.918-2.232.203-.223.535-.325.855-.325.26 0 .521.01.748.016.24.006.564-.09.886.684.321.771.776 1.889.845 2.027.069.137.114.298.011.503-.103.205-.154.333-.306.512-.152.18-.318.4-.455.54-.15.153-.307.32-.132.622.176.303.782 1.285 1.677 2.083 1.156 1.03 2.127 1.365 2.43 1.517.303.152.48.13.66-.076.18-.206.772-.896.98-1.203.207-.307.414-.256.694-.153.28.103 1.777.838 2.082.99.305.153.508.23.58.355.071.125.071.728-.195 1.475z"/></svg>
+  </a>
+
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script> 
+  <script src="js/main.js"></script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Filtros de Categoria
+      const buttons = document.querySelectorAll('.filter-btn');
+      const projects = document.querySelectorAll('.project');
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filterValue = btn.getAttribute('data-filter');
+
+          projects.forEach(project => {
+            if (filterValue === 'all' || project.getAttribute('data-category') === filterValue) {
+              project.style.display = 'block';
+              setTimeout(() => {
+                project.style.opacity = '1';
+                project.style.transform = 'translateY(0)';
+              }, 50);
+            } else {
+              project.style.opacity = '0';
+              project.style.transform = 'translateY(20px)';
+              setTimeout(() => project.style.display = 'none', 400);
+            }
+          });
+        });
+      });
     });
-  });
-</script>
-
-<!-- SCROLL ANIMATION SCRIPT -->
-<script>
-  const animatedElements = document.querySelectorAll('[data-animate]');
-
-  const scrollObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        scrollObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-
-  animatedElements.forEach(el => scrollObserver.observe(el));
-</script>
-
+  </script>
 </body>
 </html>
