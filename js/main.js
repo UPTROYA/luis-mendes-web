@@ -1,5 +1,5 @@
 /* ===================================== */
-/* MAIN JS - DEFINITIVO OTIMIZADO        */
+/* MAIN JS - DEFINITIVO CINEMATOGRÁFICO  */
 /* ===================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
     direction: 'vertical',
     smooth: true,
-    smoothTouch: false // Desativa scroll suave no touch para evitar conflitos
+    smoothTouch: false 
   });
 
   function raf(time) {
@@ -19,11 +19,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   requestAnimationFrame(raf);
 
-  // Garante que a página comece no topo ao carregar
+  // OTIMIZAÇÃO DE VÍDEO CINEMATOGRÁFICO
+  const cinemaVideo = document.querySelector('.cinema-video');
+  if (cinemaVideo) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          cinemaVideo.play().catch(() => {}); 
+        } else {
+          cinemaVideo.pause();
+        }
+      });
+    }, { threshold: 0.1 });
+    videoObserver.observe(cinemaVideo);
+  }
+
   window.scrollTo(0, 0);
   lenis.scrollTo(0, { immediate: true });
 
-  // Integração com links âncora
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -41,25 +54,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // 2. MENU MOBILE
   const hamburger = document.querySelector(".hamburger");
   const navLinks = document.querySelector(".nav-links");
-  const links = document.querySelectorAll(".nav-links a");
-
   if (hamburger) {
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active");
       navLinks.classList.toggle("active");
       document.body.style.overflow = navLinks.classList.contains("active") ? "hidden" : "auto";
     });
-
-    links.forEach(link => {
-      link.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        navLinks.classList.remove("active");
-        document.body.style.overflow = "auto";
-      });
-    });
   }
 
-  // 3. LINKS EXTERNOS (SAÍDA)
+  // 3. LINKS EXTERNOS
   document.querySelectorAll('a[href]').forEach(link => {
     link.addEventListener('click', e => {
       const href = link.getAttribute('href');
@@ -82,51 +85,10 @@ document.addEventListener("DOMContentLoaded", () => {
   initFaq();
 });
 
-/* --- FUNÇÕES AUXILIARES --- */
-
-function initFaq() {
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    const answer = item.querySelector('.faq-answer');
-    question.addEventListener('click', () => {
-      const isOpen = item.classList.contains('active');
-      faqItems.forEach(otherItem => {
-        const otherAnswer = otherItem.querySelector('.faq-answer');
-        otherItem.classList.remove('active');
-        if(otherAnswer) otherAnswer.style.maxHeight = null;
-      });
-      if (!isOpen) {
-        item.classList.add('active');
-        answer.style.maxHeight = answer.scrollHeight + "px";
-      } else {
-        answer.style.maxHeight = null;
-      }
-    });
-  });
-}
-
-function initScrollSpy() {
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const observerOptions = { root: null, rootMargin: "-20% 0px -60% 0px", threshold: 0 };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if(link.getAttribute('href') === `#${entry.target.id}`) link.classList.add('active');
-        });
-      }
-    });
-  }, observerOptions);
-  sections.forEach(section => observer.observe(section));
-}
-
 function initTiltAndSpotlight() {
-  const cards = document.querySelectorAll('.spotlight-card');
+  // Ignora o cinema-frame para manter o vídeo estático e sofisticado
+  const cards = document.querySelectorAll('.spotlight-card:not(.cinema-frame .spotlight-card)');
   
-  // Trava de segurança: Não executa em telas menores que 1024px (Tablets/Celulares)
   if (window.innerWidth < 1024) return;
 
   cards.forEach(card => {
@@ -218,10 +180,7 @@ function initParticles(canvas) {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(237, 165, 71, ${this.opacity})`;
-      ctx.shadowBlur = 5;
-      ctx.shadowColor = "rgba(237, 165, 71, 0.5)";
       ctx.fill();
-      ctx.shadowBlur = 0;
     }
   }
 
@@ -250,17 +209,47 @@ function initParticles(canvas) {
 }
 
 function initScrollAnimation() {
-  const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
   const scrollObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("in-view");
-        scrollObserver.unobserve(entry.target);
       }
     });
-  }, observerOptions);
+  }, { threshold: 0.15 });
 
   document.querySelectorAll('.fade-up').forEach((el) => {
     scrollObserver.observe(el);
   });
+}
+
+function initFaq() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    question.addEventListener('click', () => {
+      const answer = item.querySelector('.faq-answer');
+      const isOpen = item.classList.contains('active');
+      faqItems.forEach(i => { i.classList.remove('active'); i.querySelector('.faq-answer').style.maxHeight = null; });
+      if (!isOpen) {
+        item.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      }
+    });
+  });
+}
+
+function initScrollSpy() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if(link.getAttribute('href') === `#${entry.target.id}`) link.classList.add('active');
+        });
+      }
+    });
+  }, { rootMargin: "-20% 0px -60% 0px" });
+  sections.forEach(s => observer.observe(s));
 }
