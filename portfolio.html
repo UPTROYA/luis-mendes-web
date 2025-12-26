@@ -4,23 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfólio | Luis Mendes</title>
-  <meta name="description" content="Confira nossos projetos recentes de criação de sites, e-commerce e identidade visual.">
   
-<meta name="description" content="Luis Mendes - Especialista em Criação de Sites de Alta Performance e Design Estratégico.">
-<meta name="keywords" content="web design, sites, landing pages, desenvolvimento web, consultoria">
-<meta name="author" content="Luis Mendes">
-<meta name="robots" content="index, follow">
+  <meta name="description" content="Luis Mendes - Especialista em Criação de Sites de Alta Performance e Design Estratégico.">
+  <meta name="keywords" content="web design, sites, landing pages, desenvolvimento web, consultoria">
+  <meta name="author" content="Luis Mendes">
+  <meta name="robots" content="index, follow">
 
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.seusite.com.br/">
-<meta property="og:title" content="Luis Mendes | Consultoria & Criação de Sites">
-<meta property="og:description" content="Transformo negócios através de design estratégico e tecnologia de ponta. Veja meu portfólio.">
-<meta property="og:image" content="https://www.seusite.com.br/assets/og-image.jpg"> <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Luis Mendes | Consultoria & Criação de Sites">
-<meta name="twitter:description" content="Transformo negócios através de design estratégico e tecnologia de ponta.">
-<meta name="twitter:image" content="https://www.seusite.com.br/assets/og-image.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.seusite.com.br/">
+  <meta property="og:title" content="Luis Mendes | Consultoria & Criação de Sites">
+  <meta property="og:description" content="Transformo negócios através de design estratégico e tecnologia de ponta. Veja meu portfólio.">
+  <meta property="og:image" content="https://www.seusite.com.br/assets/og-image.jpg">
 
-<link rel="icon" type="image/png" href="assets/favicon.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Luis Mendes | Consultoria & Criação de Sites">
+  <meta name="twitter:description" content="Transformo negócios através de design estratégico e tecnologia de ponta.">
+  <meta name="twitter:image" content="https://www.seusite.com.br/assets/og-image.jpg">
+
+  <link rel="icon" type="image/png" href="assets/favicon.png">
 
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/portfolio.css">
@@ -70,7 +71,7 @@
       <div class="container">
         <div class="portfolio-grid">
           
-          <article class="project project-featured fade-up spotlight-card" data-category="site">
+          <article class="project project-featured fade-up" data-category="site">
             <a href="bn.html" class="project-link-wrapper">
               <div class="project-media">
                 <img src="assets/bn.jpg" alt="Frigorífico Nacional" loading="lazy" decoding="async">
@@ -84,7 +85,7 @@
             </a>
           </article>
 
-          <article class="project fade-up spotlight-card" data-category="ecommerce">
+          <article class="project fade-up" data-category="ecommerce">
             <a href="#" class="project-link-wrapper">
               <div class="project-media">
                 <img src="assets/cosmeticos.jpg" alt="Marca de Cosméticos" loading="lazy" decoding="async">
@@ -98,7 +99,7 @@
             </a>
           </article>
 
-          <article class="project fade-up spotlight-card" data-category="lp">
+          <article class="project fade-up" data-category="lp">
             <a href="#" class="project-link-wrapper">
               <div class="project-media">
                 <img src="assets/tech.jpg" alt="Tech Startup" loading="lazy" decoding="async">
@@ -155,8 +156,25 @@
   <script src="js/main.js"></script>
   
   <script>
+
+    // ... (seu código de filtros existente) ...
+
+    // --- LÓGICA DO SPOTLIGHT ---
+    const cards = document.querySelectorAll('.project');
+
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        // Calcula a posição do mouse relativa ao card
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Atualiza as variáveis CSS apenas deste card
+        card.style.setProperty('--x', `${x}px`);
+        card.style.setProperty('--y', `${y}px`);
+      });
+    });
     document.addEventListener("DOMContentLoaded", () => {
-      // Filtros de Categoria
       const buttons = document.querySelectorAll('.filter-btn');
       const projects = document.querySelectorAll('.project');
 
@@ -164,19 +182,30 @@
         btn.addEventListener('click', () => {
           buttons.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
+          
           const filterValue = btn.getAttribute('data-filter');
 
           projects.forEach(project => {
-            if (filterValue === 'all' || project.getAttribute('data-category') === filterValue) {
+            const category = project.getAttribute('data-category');
+            const shouldShow = filterValue === 'all' || category === filterValue;
+
+            if (shouldShow) {
               project.style.display = 'block';
-              setTimeout(() => {
+              // requestAnimationFrame garante execução no próximo frame disponível
+              requestAnimationFrame(() => {
                 project.style.opacity = '1';
                 project.style.transform = 'translateY(0)';
-              }, 50);
+              });
             } else {
               project.style.opacity = '0';
-              project.style.transform = 'translateY(20px)';
-              setTimeout(() => project.style.display = 'none', 400);
+              project.style.transform = 'translateY(10px)';
+              
+              // Remove do fluxo após a transição
+              setTimeout(() => {
+                if(project.style.opacity === '0') {
+                    project.style.display = 'none';
+                }
+              }, 400);
             }
           });
         });

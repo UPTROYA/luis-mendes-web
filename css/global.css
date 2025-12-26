@@ -2,7 +2,7 @@
 /* 1. CONFIGURAÇÕES GLOBAIS & VARIÁVEIS              */
 /* ================================================= */
 :root {
-  --bg-deep: #020202; /* Preto Profundo */
+  --bg-deep: #020202; 
   --bg-surface: #0a0a0a;
   --text-main: #ffffff;
   --text-muted: #999999;
@@ -11,12 +11,13 @@
   --accent: #eda547;
   --accent-glow: rgba(237, 165, 71, 0.4);
   
-  --glass-border: rgba(255, 255, 255, 0.06);
-  --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  /* Easing padrão mais rápido para sensação de velocidade */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; /* Deixa o Lenis controlar o scroll */ }
 
 body {
   background-color: var(--bg-deep);
@@ -24,7 +25,6 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
-  /* Vinheta Dramática Global */
   background-image: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.9) 100%);
 }
 
@@ -35,29 +35,25 @@ ul { list-style: none; }
 .container { width: min(1200px, 92%); margin: auto; }
 
 /* ================================================= */
-/* 2. LUZES AMBIENTES "VIVAS"                        */
+/* 2. LUZES AMBIENTES (OTIMIZADAS)                   */
 /* ================================================= */
-@keyframes pulse-slow {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.1); }
-}
-
 .ambient-light {
   position: fixed;
-  width: 700px;
-  height: 700px;
+  width: 600px; /* Reduzido levemente */
+  height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(237, 165, 71, 0.15) 0%, rgba(0,0,0,0) 65%);
-  filter: blur(100px);
+  background: radial-gradient(circle, rgba(237, 165, 71, 0.08) 0%, rgba(0,0,0,0) 70%);
+  filter: blur(80px); /* Blur menor exige menos GPU */
   z-index: -2;
   pointer-events: none;
-  animation: pulse-slow 10s infinite ease-in-out;
+  /* Animação removida ou simplificada para performance */
+  opacity: 0.4;
 }
-.light-top-right { top: -30%; right: -30%; animation-delay: 0s; }
-.light-bottom-left { bottom: -30%; left: -30%; animation-delay: 5s; }
+.light-top-right { top: -20%; right: -20%; }
+.light-bottom-left { bottom: -20%; left: -20%; }
 
 /* ================================================= */
-/* 3. NAVBAR FLUTUANTE (PADRÃO)                      */
+/* 3. NAVBAR FLUTUANTE                               */
 /* ================================================= */
 header.navbar {
   position: fixed;
@@ -66,15 +62,15 @@ header.navbar {
   transform: translateX(-50%);
   width: min(1100px, 92%); 
   height: 75px;
-  background: rgba(8, 8, 8, 0.85);
-  backdrop-filter: blur(20px); 
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(8, 8, 8, 0.9); /* Mais opaco para evitar recálculo de fundo */
+  backdrop-filter: blur(12px); 
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: 100px;
   z-index: 1000;
   display: flex; 
   align-items: center;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .nav-container { 
@@ -86,25 +82,13 @@ header.navbar {
 }
 
 /* LOGO */
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-}
-
 .logo img {
   height: 55px;
   width: auto;
-  object-fit: contain;
-  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(237, 165, 71, 0.6));
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.4s ease;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease;
 }
-
-.logo img:hover {
-  transform: scale(1.08);
-  filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(237, 165, 71, 1));
-}
+.logo img:hover { transform: scale(1.05); }
 
 /* LINKS */
 .nav-links { display: flex; gap: 32px; list-style: none; }
@@ -113,15 +97,11 @@ header.navbar {
   color: var(--text-muted); 
   font-size: 0.9rem; 
   font-weight: 500; 
-  transition: 0.3s; 
+  transition: color 0.3s ease; 
 }
 
-/* Estado Ativo e Hover */
 .nav-links a:hover,
-.nav-links a.active { 
-  color: #fff; 
-  text-shadow: 0 0 15px rgba(255,255,255,0.5); 
-}
+.nav-links a.active { color: #fff; }
 
 /* BOTÃO NAV */
 .btn-nav {
@@ -130,11 +110,11 @@ header.navbar {
   padding: 10px 24px !important; 
   border-radius: 50px; 
   border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
 }
 .btn-nav:hover { 
   background: var(--accent) !important; 
   color: #000 !important; 
-  box-shadow: 0 0 30px var(--accent-glow); 
   border-color: var(--accent); 
 }
 
@@ -142,7 +122,7 @@ header.navbar {
 /* 4. MENU HAMBURGER (MOBILE)                        */
 /* ================================================= */
 .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 1100; }
-.hamburger span { width: 25px; height: 2px; background: #fff; transition: 0.4s; }
+.hamburger span { width: 25px; height: 2px; background: #fff; transition: 0.3s; }
 
 @media(max-width: 768px) {
   .hamburger { display: flex; }
@@ -150,15 +130,14 @@ header.navbar {
   .logo img { height: 45px; }
   
   .nav-links {
-    position: fixed; inset: 0; background: rgba(2,2,2,0.98); backdrop-filter: blur(25px);
+    position: fixed; inset: 0; background: #050505;
     flex-direction: column; justify-content: center; align-items: center;
-    transform: translateY(-100%); transition: 0.5s cubic-bezier(0.8,0,0.2,1);
+    transform: translateY(-100%); transition: transform 0.4s ease;
     z-index: 999;
   }
   .nav-links.active { transform: translateY(0); }
   
-  .nav-links a { font-size: 1.8rem; opacity: 0; transform: translateY(30px); transition: 0.4s; }
-  .nav-links.active a { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+  .nav-links a { font-size: 1.5rem; }
   
   .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); background: var(--accent); }
   .hamburger.active span:nth-child(2) { opacity: 0; }
@@ -166,23 +145,18 @@ header.navbar {
 }
 
 /* ================================================= */
-/* 5. FOOTER & ELEMENTOS GERAIS                      */
+/* 5. UTILS                                          */
 /* ================================================= */
-.main-footer { 
-  text-align: center; 
-  padding: 80px 0; 
-  color: var(--text-muted); 
-  border-top: 1px solid var(--glass-border); 
-  margin-top: auto;
+.fade-up { 
+  opacity: 0; 
+  transform: translateY(30px); 
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
 }
-
-/* Fade Up Animation */
-.fade-up { opacity: 0; transform: translateY(40px); transition: 1s var(--ease-out); }
 .fade-up.in-view { opacity: 1; transform: translateY(0); }
 
-/* Page Transition Overlay (IMPORTANTE) */
 .page-transition {
   position: fixed; inset: 0; background: #000; z-index: 9999;
-  opacity: 1; pointer-events: none; transition: opacity 0.6s ease;
+  opacity: 1; pointer-events: none; transition: opacity 0.5s ease;
 }
 .page-transition.hide { opacity: 0; }

@@ -48,8 +48,7 @@ html {
 
 /* TÍTULO COM SHINE E OTIMIZAÇÃO GPU */
 .hero h1 {
-  background: linear-gradient(to right, #c99f4a, #fcf6ba, #b38728, #fbf5b7, #aa771c, #c99f4a);
-  background-size: 200% auto;
+  background: linear-gradient(to right, #c99f4a, #fcf6ba, #b38728, #fbf5b7, #aa771c);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
@@ -58,13 +57,8 @@ html {
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.03em;
-  animation: shine 5s linear infinite;
-  will-change: background-position;
 }
 
-@keyframes shine {
-  to { background-position: 200% center; }
-}
 
 .hero p {
   font-size: 1.3rem;
